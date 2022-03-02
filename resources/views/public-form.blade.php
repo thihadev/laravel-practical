@@ -96,27 +96,27 @@
                 return false;
             });
 
-                 $.ajax({
-                    type: "GET",
-                    url: "api/public-form",
-                    headers: {
-                        Authorization: 'Bearer '+token
-                    },
-                    success: function(result)
-                    {
-                        if (result) {
-                            $.each(result, function (key, value) { 
-                                $('#form').append('<div class="mb-3"><label for="name">'+value.label+ '</label><br><input type="'+value.type+'" id="'+value.value+'"></div>')
-                                
-                            });
-                            $('#subbtn').append('<button type="submit"class="btn btn-color px-5 mb-5 w-100"> Submit </button>')
-                        }
-                    },
-                    error : function (result) {
-                        $('#form').append('<div class="mb-3"><p>'+result.responseJSON.error+'</p></div>')
-                        // $('#subbtn').hide();
+             $.ajax({
+                type: "GET",
+                url: "api/public-form",
+                headers: {
+                    Authorization: 'Bearer '+token
+                },
+                success: function(result)
+                {
+                    if (result) {
+                        $.each(result, function (key, value) { 
+                            $('#form').append('<div class="mb-3"><label for="name">'+value.label+ '</label><br><input type="'+value.type+'" id="'+value.value+'"></div>')
+                            
+                        });
+                        $('#subbtn').append('<button type="submit"class="btn btn-color px-5 mb-5 w-100"> Submit </button>')
                     }
-                });
+                },
+                error : function (result) {
+                    $('#form').append('<div class="mb-3"><p>'+result.responseJSON.error+'</p></div>')
+                    // $('#subbtn').hide();
+                }
+            });
                 
 
             $("#logoutForm").submit(function(event)
